@@ -1,9 +1,7 @@
 interface LoginType {
   token: string
-  userInfo: object,
+  userInfo: object
   menu: any
 }
 
-export {
-  LoginType
-}
+export { LoginType }

@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import { useStore } from "vuex"
+import { useStore } from 'vuex'
 import rules from '../config/loginAccountConfig'
 import { ElForm } from 'element-plus'
 import LocalCache from '../../../utils/cache'
@@ -40,7 +40,7 @@ export default defineComponent({
             LocalCache.removeCache('name')
             LocalCache.removeCache('password')
           }
-          store.dispatch("LoginModule/accountLogin", { ...account })
+          store.dispatch('LoginModule/accountLogin', { ...account })
         }
       })
     }

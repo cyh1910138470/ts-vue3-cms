@@ -1,6 +1,6 @@
-import axios from "axios"
+import axios from 'axios'
 import { ElLoading } from 'element-plus'
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios"
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 interface kkRequestInterceptors {
   requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig
@@ -22,44 +22,52 @@ class kkRequest {
     //1.从config拿出的拦截器是实例的拦截器
     this.instance.interceptors.request.use(
       config.interceptors?.requestInterceptor,
-      config.interceptors?.requestInterceptorCatch)
+      config.interceptors?.requestInterceptorCatch
+    )
     this.instance.interceptors.response.use(
       config.interceptors?.responseInterceptor,
-      config.interceptors?.responseInterceptorCatch)
+      config.interceptors?.responseInterceptorCatch
+    )
 
     //2.添加所有的实例都有的拦截器
-    this.instance.interceptors.request.use((config: kkRequestConfig) => {
-      if (config.ShowLoading) {
-        const loading = ElLoading.service({
-          lock: true,
-          text: "正在加载",
-          background: "rgba(0, 0, 0, 0.5)"
-        })
-        this.loading = loading
+    this.instance.interceptors.request.use(
+      (config: kkRequestConfig) => {
+        if (config.ShowLoading) {
+          const loading = ElLoading.service({
+            lock: true,
+            text: '正在加载',
+            background: 'rgba(0, 0, 0, 0.5)'
+          })
+          this.loading = loading
+        }
+        console.log('全局-请求成功拦截')
+        return config
+      },
+      (err) => {
+        console.log('全局-请求失败拦截')
+        return err
       }
-      console.log("全局-请求成功拦截");
-      return config
-    }, err => {
-      console.log("全局-请求失败拦截");
-      return err
-    })
-    this.instance.interceptors.response.use(res => {
-      setTimeout(() => {
-        this?.loading?.close()
-      }, 500)
-      //1.响应失败
-      const data = res.data
-      if (data.returnCode === "-1001") {
-        console.log("请求失败 错误码-1001");
+    )
+    this.instance.interceptors.response.use(
+      (res) => {
+        setTimeout(() => {
+          this?.loading?.close()
+        }, 500)
+        //1.响应失败
+        const data = res.data
+        if (data.returnCode === '-1001') {
+          console.log('请求失败 错误码-1001')
+        }
+        console.log('全局-响应成功拦截')
+        return res
+      },
+      (err) => {
+        //2.响应失败
+        // switch(err.response.status) 判断错误码给不同的页面
+        console.log('全局-响应失败拦截')
+        return err
       }
-      console.log("全局-响应成功拦截");
-      return res
-    }, err => {
-      //2.响应失败
-      // switch(err.response.status) 判断错误码给不同的页面
-      console.log("全局-响应失败拦截");
-      return err
-    })
+    )
   }
   loading?: any
   interceptors?: kkRequestInterceptors
@@ -71,7 +79,7 @@ class kkRequest {
     }
 
     return new Promise((resolve, reject) => {
-      this.instance.request(config).then(res => {
+      this.instance.request(config).then((res) => {
         if (config?.interceptors?.responseInterceptor) {
           res = config.interceptors.responseInterceptor(res)
         }
@@ -81,15 +89,14 @@ class kkRequest {
     })
   }
   get(config: kkRequestConfig) {
-    return this.request({...config, method: "get"})
+    return this.request({ ...config, method: 'get' })
   }
   delete(config: kkRequestConfig) {
-    return this.request({...config, method: "delete"})
+    return this.request({ ...config, method: 'delete' })
   }
   post(config: kkRequestConfig) {
-    return this.request({...config, method: "post"})
+    return this.request({ ...config, method: 'post' })
   }
 }
 
 export default kkRequest
-

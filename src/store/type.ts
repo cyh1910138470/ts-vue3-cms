@@ -3,6 +3,4 @@ interface RootType {
   age: number
 }
 
-export {
-  RootType
-}
+export { RootType }

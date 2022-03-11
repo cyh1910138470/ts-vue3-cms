@@ -1,5 +1,5 @@
-console.log("axios.ts......");
-import axios from "axios";
+console.log('axios.ts......')
+import axios from 'axios'
 // axios.get("http://123.207.32.32:8000/home/multidata").then((res) => {
 //   console.log(res);
 // })
@@ -31,7 +31,7 @@ import axios from "axios";
 
 //axios配置 baseURL url methods
 //1.全局配置
-axios.defaults.baseURL = "http://httpbin.org"
+axios.defaults.baseURL = 'http://httpbin.org'
 axios.defaults.timeout = 1000
 
 //2.局部配置
@@ -77,20 +77,23 @@ axios.interceptors.request.use(
     // 想做的一些操作
     //1.给请求添加token
     //2.loading动画
-    console.log('请求成功的拦截');
+    console.log('请求成功的拦截')
     return config
   },
   (err) => {
-    console.log('请求失败的拦截');
+    console.log('请求失败的拦截')
     return err
   }
 )
-axios.interceptors.response.use((res) => {
-  console.log('服务器响应成功的拦截');
-  return res
-}, (err) => {
-  console.log('服务器响应失败的拦截');
-  return err
-})
+axios.interceptors.response.use(
+  (res) => {
+    console.log('服务器响应成功的拦截')
+    return res
+  },
+  (err) => {
+    console.log('服务器响应失败的拦截')
+    return err
+  }
+)
 
-export default { }
+export default {}

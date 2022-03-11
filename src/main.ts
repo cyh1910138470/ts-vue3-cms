@@ -1,22 +1,26 @@
 import { createApp } from 'vue'
-import "normalize.css"
-import "./assets/css/index.less"
+import 'normalize.css'
+import './assets/css/index.less'
+// import { globalRegister } from './global'
 
 //全局引用element-plus
-import ElementPlus, { ElOptionGroup } from "element-plus"
+import ElementPlus, { ElOptionGroup } from 'element-plus'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { LocalLoginState } from "./store/index"
+import { LocalLoginState } from './store/index'
+import { LocalRoutesState } from './store'
 
 const app = createApp(App)
 //全局引用element-plus
 app.use(ElementPlus)
+// app.use(globalRegister)
 app.use(store)
 app.use(router)
-app.mount("#app")
+app.mount('#app')
 LocalLoginState()
+LocalRoutesState()
 
 // console.log(process.env.VUE_APP_BASE_NAME);
 // console.log(process.env.VUE_APP_BASE_URL);
@@ -41,4 +45,3 @@ LocalLoginState()
 //   console.log(res);
 //   console.log('----------------------------');
 // })
-

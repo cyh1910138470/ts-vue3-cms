@@ -1,5 +1,5 @@
 interface accountType {
-  name: string,
+  name: string
   password: any
 }
 
@@ -16,9 +16,4 @@ interface roleIdType {
   roleId: number
 }
 
-export {
-  accountType,
-  dataType,
-  userInfoIdType,
-  roleIdType
-}
+export { accountType, dataType, userInfoIdType, roleIdType }

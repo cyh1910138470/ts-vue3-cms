@@ -23,11 +23,19 @@
       </el-tab-pane>
     </el-tabs>
     <div class="remember-psw">
-      <el-checkbox v-model="isKeepPassword" label="记住密码" size="large">记住密码</el-checkbox>
+      <el-checkbox v-model="isKeepPassword" label="记住密码" size="large"
+        >记住密码</el-checkbox
+      >
       <el-link type="primary">忘记密码</el-link>
     </div>
     <div class="immediate-longin">
-      <el-button type="primary" size="large" class="immediate-longin-index" @click="loginNow">立即登录</el-button>
+      <el-button
+        type="primary"
+        size="large"
+        class="immediate-longin-index"
+        @click="loginNow"
+        >立即登录</el-button
+      >
     </div>
   </div>
 </template>
@@ -57,12 +65,11 @@ export default defineComponent({
     const accountRef = ref<InstanceType<typeof loginAccountVue>>()
     const phoneRef = ref<InstanceType<typeof loginPhoneVue>>()
     const loginNow = () => {
-      if(currentTab.value == "account_login") {
+      if (currentTab.value == 'account_login') {
         accountRef.value?.loginAction(isKeepPassword.value)
       } else {
         phoneRef.value?.loginAction()
       }
-
     }
     return {
       isKeepPassword,

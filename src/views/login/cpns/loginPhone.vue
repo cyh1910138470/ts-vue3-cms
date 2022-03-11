@@ -5,32 +5,45 @@
     </el-form-item>
     <el-form-item label="验证码" prop="verify" class="verify-code">
       <el-input v-model="Phone.verify"></el-input>
-      <el-button v-if="isTrue" type="primary" class="get-verify-code" @click="getVertifyCode()">获取验证码</el-button>
-      <el-button v-else disabled type="primary" class="get-verify-code" @click="getVertifyCode()">请{{count}}s后再获取</el-button>
+      <el-button
+        v-if="isTrue"
+        type="primary"
+        class="get-verify-code"
+        @click="getVertifyCode()"
+        >获取验证码</el-button
+      >
+      <el-button
+        v-else
+        disabled
+        type="primary"
+        class="get-verify-code"
+        @click="getVertifyCode()"
+        >请{{ count }}s后再获取</el-button
+      >
     </el-form-item>
   </el-form>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import rules from "../config/loginPhoneConfig"
-import { useStore } from "vuex"
+import rules from '../config/loginPhoneConfig'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: '',
   setup() {
     let formRef = ref()
     const Phone = reactive({
-      phoneNumber: "",
-      verify: ""
+      phoneNumber: '',
+      verify: ''
     })
     const store = useStore()
     let count = ref(5)
     let isTrue = ref(true)
     const loginAction = () => {
-      formRef.value?.validate((data:boolean) => {
+      formRef.value?.validate((data: boolean) => {
         if (data) {
-          store.dispatch("LoginModule/phoneLogin", {
+          store.dispatch('LoginModule/phoneLogin', {
             phoneNumber: Phone.phoneNumber,
             Verify: Phone.verify
           })
