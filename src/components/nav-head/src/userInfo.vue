@@ -2,8 +2,22 @@
   <div class="userInfo">
     <el-dropdown>
       <div class="userinfoUp">
+        <!-- <span class="smallIcons">
+          <Bell></Bell>
+        </span>
+        <span class="smallIcons">
+          <ChatDotRound></ChatDotRound>
+        </span>
+        <span class="smallIcons">
+          <CollectionTag></CollectionTag>
+        </span> -->
         <span>
-          <el-avatar shape="circle" :size="28" fit="fill" src="http://q2.qlogo.cn/headimg_dl?dst_uin=1910138470&spec=100"></el-avatar>
+          <el-avatar
+            shape="circle"
+            :size="28"
+            fit="fill"
+            src="http://q2.qlogo.cn/headimg_dl?dst_uin=1910138470&spec=100"
+          ></el-avatar>
         </span>
         <span class="el-dropdown-link">
           {{ userInfo.data.name }}
@@ -37,14 +51,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { CircleCloseFilled, UserFilled, Setting } from '@element-plus/icons-vue'
+import { CircleCloseFilled, UserFilled, Setting, Bell, ChatDotRound, CollectionTag } from '@element-plus/icons-vue'
 
 export default defineComponent({
   name: '',
   components: {
     CircleCloseFilled,
     UserFilled,
-    Setting
+    Setting,
+    Bell,
+    ChatDotRound,
+    CollectionTag
   },
   props: {
     userInfo: {
@@ -82,4 +99,5 @@ export default defineComponent({
 .el-dropdown-link {
   margin-left: 10px;
 }
+
 </style>

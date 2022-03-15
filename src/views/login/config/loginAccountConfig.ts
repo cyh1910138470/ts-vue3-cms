@@ -6,8 +6,8 @@ const AccountRules = {
       trigger: 'blur'
     },
     {
-      pattern: /^[a-z0-9]{5,20}$/,
-      message: '用户名必须为5-20个英文字母或数字!',
+      pattern: /^[a-z0-9]{3,20}$/,
+      message: '用户名必须为3-20个英文字母或数字!',
       trigger: 'blur'
     }
   ],

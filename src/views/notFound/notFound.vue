@@ -1,11 +1,11 @@
 <template>
   <div class="notFound">
-    <img src="../../assets/img/notFound.jpg" alt="">
+    <img src="../../assets/img/notFound.jpg" alt="" />
     <!-- <h1>当前访问的页面不存在</h1> -->
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({

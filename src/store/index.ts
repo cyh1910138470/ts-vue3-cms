@@ -1,9 +1,9 @@
 import { createStore } from 'vuex'
 import LoginModule from './login/login'
 import { RootType } from './type'
-import LocalCache from "../utils/cache"
-import router from "../router/index"
-import { AddRouters } from "../utils/mapMenus"
+import LocalCache from '../utils/cache'
+import router from '../router/index'
+import { AddRouters } from '../utils/mapMenus'
 
 const store = createStore<RootType>({
   state: {

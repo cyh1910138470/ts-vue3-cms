@@ -1,5 +1,3 @@
-import navHead from "../nav-head/src/navHead.vue"
+import navHead from '../nav-head/src/navHead.vue'
 
-export {
-  navHead
-}
+export { navHead }

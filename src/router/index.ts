@@ -9,17 +9,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     component: () => import('../views/login/login.vue'),
-    name: "login"
+    name: 'login'
   },
   {
     path: '/main',
     component: () => import('../views/main/main.vue'),
-    name: "main"
+    name: 'main'
   },
   {
-    path: "/:pathMatch(.*)*",
+    path: '/:pathMatch(.*)*',
     component: () => import('../views/notFound/notFound.vue'),
-    name: "notFound"
+    name: 'notFound'
   }
 ]
 
@@ -35,6 +35,10 @@ router.beforeEach((to) => {
       return '/login'
     }
   }
+  console.log('-------------');
+  console.log(router.getRoutes());
+  console.log(to);
+  console.log('-------------');
 })
 
 export default router

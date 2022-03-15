@@ -17,9 +17,9 @@ const app = createApp(App)
 app.use(ElementPlus)
 // app.use(globalRegister)
 app.use(store)
+LocalLoginState()
 app.use(router)
 app.mount('#app')
-LocalLoginState()
 LocalRoutesState()
 
 // console.log(process.env.VUE_APP_BASE_NAME);

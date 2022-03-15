@@ -4,34 +4,58 @@
       <img src="../../../assets/img/logo.svg" alt="vu3+ts" />
       <span v-show="!isCollapse" class="title">TS+VUE3</span>
     </div>
-    <el-menu default-active="2" class="el-menu-vertical"
-    background-color="#031524"
-    text-color="#fff"
-    active-text-color="aqua"
-    :collapse="isCollapse"
-    @open="handleOpen">
+    <el-menu
+      :default-active="defaulActive"
+      class="el-menu-vertical"
+      background-color="#031524"
+      text-color="#fff"
+      active-text-color="aqua"
+      :collapse="isCollapse"
+      @open="handleOpen"
+    >
       <template v-for="item in userMenu" :key="item.id">
-        <el-sub-menu v-if="item.type == 1" :key="item.id" :index="JSON.stringify(item.id)" class="submenu-margin">
+        <el-sub-menu
+          v-if="item.type == 1"
+          :key="item.id"
+          :index="JSON.stringify(item.id)"
+          class="submenu-margin"
+        >
           <template #title>
-            <el-icon><operation/></el-icon>
-            <span>{{item.name}}</span>
+            <el-icon><operation /></el-icon>
+            <span>{{ item.name }}</span>
           </template>
           <template v-for="itemChildren in item.children">
-            <el-sub-menu v-if="itemChildren.type == 1" :key="itemChildren.id" :index="JSON.stringify(itemChildren.id)" class="submenu-margin">
-            <template #title>
-              <span>{{itemChildren.name}}</span>
-            </template>
+            <el-sub-menu
+              v-if="itemChildren.type == 1"
+              :key="itemChildren.id"
+              :index="JSON.stringify(itemChildren.id)"
+              class="submenu-margin"
+            >
+              <template #title>
+                <span>{{ itemChildren.name }}</span>
+              </template>
             </el-sub-menu>
 
-            <el-menu-item v-else :index="JSON.stringify(itemChildren.id)" class="submenu-margin" @click="routerclick(itemChildren.url)">
-              <span @click="routerclick(itemChildren.url)">{{itemChildren.name}}</span>
+            <el-menu-item
+              v-else
+              :index="JSON.stringify(itemChildren.id)"
+              class="submenu-margin"
+              @click="routerclick(itemChildren.url)"
+            >
+              <span @click="routerclick(itemChildren.url)">{{
+                itemChildren.name
+              }}</span>
             </el-menu-item>
           </template>
-
         </el-sub-menu>
 
-        <el-menu-item v-else :index="JSON.stringify(item.id)" class="submenu-margin" @click="routerclick(item.url)">
-          <span @click="routerclick(item.url)">{{item.name}}</span>
+        <el-menu-item
+          v-else
+          :index="JSON.stringify(item.id)"
+          class="submenu-margin"
+          @click="routerclick(item.url)"
+        >
+          <span @click="routerclick(item.url)">{{ item.name }}</span>
         </el-menu-item>
       </template>
     </el-menu>
@@ -40,9 +64,11 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue'
+import { useRoute } from "vue-router"
 import { useStore } from 'vuex'
 import { Operation } from '@element-plus/icons-vue'
-import router from "../../../router/index"
+import router from '../../../router/index'
+import { getdefaultActiveID } from "../../../utils/mapMenus"
 
 export default defineComponent({
   name: '',
@@ -56,20 +82,27 @@ export default defineComponent({
     }
   },
   setup() {
+    const route = useRoute()
     const store = useStore()
     // const userMenu = store.state.LoginModule.menu
     const userMenu = computed(() => store.state.LoginModule.menu)
     console.log(userMenu)
     const handleOpen = (key: string, keyPath: string[]) => {
-     console.log(key, keyPath)
+      console.log(key, keyPath)
     }
     const routerclick = (url: string) => {
       router.push(url)
     }
+    const currentPath = route.path
+    console.log("当前路由路径是" + currentPath);
+    const item = getdefaultActiveID(userMenu.value, currentPath)
+    const ID = JSON.stringify(item.id)
+    const defaulActive = ref(ID)
     return {
       userMenu,
       handleOpen,
-      routerclick
+      routerclick,
+      defaulActive
     }
   }
 })
@@ -104,14 +137,14 @@ img {
   background-color: #0a60bd !important;
 }
 
-  .el-submenu {
-    background-color: #001529 !important;
-    // 二级菜单 ( 默认背景 )
-    .el-menu-item {
-      padding-left: 50px !important;
-      background-color: #0c2135 !important;
-    }
+.el-submenu {
+  background-color: #001529 !important;
+  // 二级菜单 ( 默认背景 )
+  .el-menu-item {
+    padding-left: 50px !important;
+    background-color: #0c2135 !important;
   }
+}
 .el-menu {
   border-right: none;
 }

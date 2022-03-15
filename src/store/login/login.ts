@@ -7,8 +7,8 @@ import { userInfoRequest } from '../../network/login/login'
 import { menuRequest } from '../../network/login/login'
 import { dataType } from '../../network/login/type'
 import LocalCache from '../../utils/cache'
-import { mapMenusRoutes } from "../../utils/mapMenus"
-import { AddRouters } from "../../utils/mapMenus"
+import { mapMenusRoutes } from '../../utils/mapMenus'
+import { AddRouters } from '../../utils/mapMenus'
 
 const LoginModule: Module<LoginType, RootType> = {
   namespaced: true,
@@ -33,9 +33,8 @@ const LoginModule: Module<LoginType, RootType> = {
       console.log('已经修改了menu')
       state.menu = menu
       const routes = mapMenusRoutes(menu)
-      console.log(routes);
-      AddRouters("main", routes)
-      LocalCache.setCache("routes", routes)
+      AddRouters('main', routes)
+      LocalCache.setCache('routes', routes)
     },
     saveToken(state, token) {
       state.token = token
@@ -45,7 +44,9 @@ const LoginModule: Module<LoginType, RootType> = {
     },
     saveMenu(state, menu) {
       state.menu = menu
-    },
+      const routes = mapMenusRoutes(menu)
+      AddRouters('main', routes)
+    }
     // saveRoutes(state, routes) {
     //   AddRouters("main", routes)
     //   console.log("已经重新添加了路由");
@@ -96,9 +97,9 @@ const LoginModule: Module<LoginType, RootType> = {
       }
     },
     setupRouteState(context) {
-      const routes = LocalCache.getCache("routes")
+      const routes = LocalCache.getCache('routes')
       // context.commit("saveRoutes", routes)
-      AddRouters("main", routes)
+      // AddRouters('main', routes)
     }
   }
 }
