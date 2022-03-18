@@ -51,7 +51,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { CircleCloseFilled, UserFilled, Setting, Bell, ChatDotRound, CollectionTag } from '@element-plus/icons-vue'
+import {
+  CircleCloseFilled,
+  UserFilled,
+  Setting,
+  Bell,
+  ChatDotRound,
+  CollectionTag
+} from '@element-plus/icons-vue'
 
 export default defineComponent({
   name: '',
@@ -99,5 +106,4 @@ export default defineComponent({
 .el-dropdown-link {
   margin-left: 10px;
 }
-
 </style>

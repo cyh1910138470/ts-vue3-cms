@@ -64,11 +64,11 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue'
-import { useRoute } from "vue-router"
+import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { Operation } from '@element-plus/icons-vue'
 import router from '../../../router/index'
-import { getdefaultActiveID } from "../../../utils/mapMenus"
+import { getdefaultActiveID } from '../../../utils/mapMenus'
 
 export default defineComponent({
   name: '',
@@ -94,7 +94,7 @@ export default defineComponent({
       router.push(url)
     }
     const currentPath = route.path
-    console.log("当前路由路径是" + currentPath);
+    console.log('当前路由路径是' + currentPath)
     const item = getdefaultActiveID(userMenu.value, currentPath)
     const ID = JSON.stringify(item.id)
     const defaulActive = ref(ID)

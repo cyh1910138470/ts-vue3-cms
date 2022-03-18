@@ -56,7 +56,7 @@ export function getdefaultActiveID(menu: any[], currentPath: string) {
     } else {
       if (item.type === 2) {
         if (item.url === currentPath) {
-          console.log('match success');
+          console.log('match success')
           res = item
         }
       }
@@ -65,22 +65,20 @@ export function getdefaultActiveID(menu: any[], currentPath: string) {
   return res
 }
 
-
 export function getBread(menu: any[], currentPath: string) {
   const breadcrumbs: any = []
   for (const item of menu) {
     if (item.type === 1) {
       const findMenu: any = getBread(item.children ?? [], currentPath)
       if (findMenu) {
-        breadcrumbs.push({name: item.name, path: item.url})
-        breadcrumbs.push({name: findMenu.name, path: findMenu.url})
+        breadcrumbs.push({ name: item.name, path: item.url })
+        breadcrumbs.push({ name: findMenu.name, path: findMenu.url })
         return findMenu
       }
-    } else if ((item.type === 2) && (item.url === currentPath)) {
-      console.log('return一次item');
+    } else if (item.type === 2 && item.url === currentPath) {
+      console.log('return一次item')
       return item
     }
   }
   return breadcrumbs
 }
-

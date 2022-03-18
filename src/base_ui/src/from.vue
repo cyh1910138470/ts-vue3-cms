@@ -13,7 +13,10 @@
                 :label-width="labelWidth"
                 class="form-item"
               >
-                <el-input :placeholder="item.placeholder" v-model="formData[`${item.filed}`]"></el-input>
+                <el-input
+                  :placeholder="item.placeholder"
+                  v-model="formData[`${item.filed}`]"
+                ></el-input>
               </el-form-item>
             </template>
 
@@ -38,7 +41,11 @@
                 :label-width="labelWidth"
                 class="form-item"
               >
-                <el-select :placeholder="item.placeholder" style="width: 100%" v-model="formData[`${item.filed}`]">
+                <el-select
+                  :placeholder="item.placeholder"
+                  style="width: 100%"
+                  v-model="formData[`${item.filed}`]"
+                >
                   <el-option
                     v-for="optionsItems in item.options"
                     :label="optionsItems.title"
@@ -92,7 +99,7 @@ export default defineComponent({
     },
     labelWidth: {
       type: String,
-      default: "100px"
+      default: '100px'
     },
     colLayout: {
       type: Object,
@@ -104,9 +111,7 @@ export default defineComponent({
     }
   },
   setup() {
-    return {
-
-    }
+    return {}
   }
 })
 </script>
@@ -118,5 +123,4 @@ export default defineComponent({
 .form-item {
   padding: 10px 60px;
 }
-
 </style>

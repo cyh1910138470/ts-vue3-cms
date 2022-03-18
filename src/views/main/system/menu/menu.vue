@@ -6,11 +6,13 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'menu',
+  name: 'my-menu',
   setup() {
     return {}
   }
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

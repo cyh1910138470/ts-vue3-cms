@@ -1,8 +1,6 @@
-<template>
+<template></template>
 
-</template>
-
-<script lang='ts'>
+<script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -13,6 +11,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

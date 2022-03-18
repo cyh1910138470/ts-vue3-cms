@@ -4,25 +4,28 @@ import { propsType } from '../../../../../base_ui/type'
 //   default: () => []
 // }
 const labelWidth = {
-  "label-width": "100px"
+  'label-width': '100px'
 }
 const colLayout = {
-    xs: 24,
-    md: 12,
-    lg: 8
+  xs: 24,
+  md: 12,
+  lg: 8
 }
 const propsItems: propsType[] = [
   {
+    filed: "string",
     type: 'input',
     label: 'username',
     placeholder: '请输入用户名'
   },
   {
+    filed: "string",
     type: 'password',
     label: 'password',
     placeholder: '请输入密码'
   },
   {
+    filed: "string",
     type: 'select',
     label: 'sports',
     placeholder: '请输入sports',
@@ -36,16 +39,19 @@ const propsItems: propsType[] = [
     ]
   },
   {
+    filed: "string",
     type: 'datepicker',
     label: 'createdate',
     placeholder: '请输入创建时间'
   },
   {
+    filed: "string",
     type: 'datepicker',
     label: 'joindate',
     placeholder: '请输入加入时间'
   },
   {
+    filed: "string",
     type: 'select',
     label: 'fruits',
     placeholder: '请输入fruits',
@@ -59,3 +65,7 @@ const propsItems: propsType[] = [
     ]
   }
 ]
+
+export {
+  propsItems
+}

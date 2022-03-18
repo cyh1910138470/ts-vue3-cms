@@ -24,8 +24,8 @@ import { Fold, Expand } from '@element-plus/icons-vue'
 import userInfo from './userInfo.vue'
 import { useStore } from 'vuex'
 import LocalCache from '../../../utils/cache'
-import { useRoute } from "vue-router"
-import { getBread } from "../../../utils/mapMenus"
+import { useRoute } from 'vue-router'
+import { getBread } from '../../../utils/mapMenus'
 
 export default defineComponent({
   name: '',
@@ -50,12 +50,12 @@ export default defineComponent({
     const menu = store.state.LoginModule.menu
 
     const route = useRoute()
-    console.log(route.path);
+    console.log(route.path)
     const arr = getBread(menu, route.path)
-    console.log(menu);
-    console.log('*******');
-    console.log(arr);
-    console.log('*******');
+    console.log(menu)
+    console.log('*******')
+    console.log(arr)
+    console.log('*******')
     return {
       isFolding,
       changeFoldState,

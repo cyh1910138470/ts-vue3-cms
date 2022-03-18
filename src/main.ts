@@ -5,20 +5,34 @@ import './assets/css/index.less'
 
 //全局引用element-plus
 import ElementPlus, { ElOptionGroup } from 'element-plus'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import { LocalLoginState } from './store/index'
 import { LocalRoutesState } from './store'
+import { timeUtcFormat } from "./utils/timeFormat"
 
 const app = createApp(App)
 //全局引用element-plus
-app.use(ElementPlus)
+app.use(ElementPlus, {
+  locale: zhCn
+})
 // app.use(globalRegister)
 app.use(store)
 LocalLoginState()
 app.use(router)
+
+app.config.globalProperties.$filters = {
+  foo: () => {
+    return "当前 foo"
+  },
+  timeformat: (time: string) => {
+    const timeParse = timeUtcFormat(time)
+    return timeParse
+  }
+}
 app.mount('#app')
 LocalRoutesState()
 

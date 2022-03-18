@@ -4,6 +4,7 @@ import { RootType } from './type'
 import LocalCache from '../utils/cache'
 import router from '../router/index'
 import { AddRouters } from '../utils/mapMenus'
+import systemModule from "./main/system/system"
 
 const store = createStore<RootType>({
   state: {
@@ -13,7 +14,8 @@ const store = createStore<RootType>({
   mutations: {},
   actions: {},
   modules: {
-    LoginModule
+    LoginModule,
+    systemModule
   }
 })
 
